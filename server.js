@@ -1,7 +1,10 @@
 var express = require('express');
+var bodyParser = require('body-parser')
+
 var app = express();
 
 app.use(express.static(__dirname));
+app.use(bodyParser.json());
 
 var testData = [];
 
@@ -11,6 +14,10 @@ app.get('/', function (req, res) {
 
 app.get('/getdata', function(req, res){
 	res.send(testData);
+});
+
+app.post('/add', function(req, res){
+	console.log(req.body);
 });
 
 var server = app.listen(8080, function(){

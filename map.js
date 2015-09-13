@@ -1,3 +1,6 @@
+// POST example
+// $.ajax({url: 'http://localhost:8080/add', type: 'POST', data: JSON.stringify({a: 'str', b: 123}), contentType: "application/json; charset=utf-8"})
+
 // TODO: Use AngularJS
 function getLostThingContent(lostThing){
 	var titleDiv = '<div>' + lostThing.title + '</div>';
