@@ -79,4 +79,6 @@ function initMap(coord) {
   return map;
 }
 
-getLocation();
+$(function(){
+	getLocation();	
+});
