@@ -32,38 +32,51 @@ lostThing.photoURL = 'http://www.splotchy.com/images/blog/puppy.jpg';
 lostThing.contact = 'b@gmail.com';
 testData.push(lostThing);
 
+// TODO: Use AngularJS
+function getLostThingContent(lostThing){
+	var titleDiv = '<div>' + lostThing.title + '</div>';
+	var descriptionDiv = '<div>' + lostThing.description + '</div>';
+	var photoImg = '<img src="' + lostThing.photoURL + '"></img>';
+	var contactDiv = '<div>' +  lostThing.contact +'</div>';
+	return titleDiv + descriptionDiv + photoImg + contactDiv;
+};
+
 function visualizeLostThings(lostThings, map){
 	lostThings.forEach(function(item){
+		
 		var marker = new google.maps.Marker({
 			position: item.coord,
 			map: map,
 			title: item.title,
 			animation: google.maps.Animation.DROP,
 		});
+		var infowindow = new google.maps.InfoWindow({
+			content: getLostThingContent(item)
+		});
+		marker.addListener('click', function(){
+			infowindow.open(map, marker);
+		});
+		
 	});
 }
 
-var latitude;
-var longitude;
-getLocation();
 function getLocation() {
 	if(navigator.geolocation){
 		navigator.geolocation.getCurrentPosition(showLocation);
 	}
 }
 function showLocation(position) {
-	latitude=position.coords.latitude;
-	longitude=position.coords.longitude;
-	var map = initMap();
+	var map = initMap({lat: position.coords.latitude, lng: position.coords.longitude});
 	visualizeLostThings(testData, map);
 } 
 
-var map;
-function initMap() {
-  map = new google.maps.Map(document.getElementById('map'), {
-    center: {lat: latitude, lng: longitude},
+function initMap(coord) {
+  var map = new google.maps.Map(document.getElementById('map'), {
+    center: coord,
     zoom: 12
   });
   
   return map;
 }
+
+getLocation();
