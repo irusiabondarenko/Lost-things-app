@@ -2,11 +2,7 @@
 // $.ajax({url: 'http://localhost:8080/add', type: 'POST', data: JSON.stringify({a: 'str', b: 123}), contentType: "application/json; charset=utf-8"})
 
 // TODO: Use AngularJS
-<<<<<<< HEAD
 
-
-=======
->>>>>>> 40c5bde82646bb33c1dbb1ef36fdece80e2a0f15
 function getLostThingContent(lostThing){
 	var titleDiv = '<div>' + lostThing.title + '</div>';
 	var descriptionDiv = '<div>' + lostThing.description + '</div>';
@@ -14,11 +10,7 @@ function getLostThingContent(lostThing){
 	var contactDiv = '<div>' +  lostThing.contact +'</div>';
 	return titleDiv + descriptionDiv + photoImg + contactDiv;
 };
-<<<<<<< HEAD
 var map_var;
-=======
-
->>>>>>> 40c5bde82646bb33c1dbb1ef36fdece80e2a0f15
 function visualizeLostThings(lostThings, map){
 	lostThings.forEach(function(item){
 		
@@ -37,23 +29,13 @@ function visualizeLostThings(lostThings, map){
 		
 	});
 }
-
-<<<<<<< HEAD
-
-=======
->>>>>>> 40c5bde82646bb33c1dbb1ef36fdece80e2a0f15
 function getLocation() {
 	if(navigator.geolocation){
 		navigator.geolocation.getCurrentPosition(showLocation);
 	}
 }
-<<<<<<< HEAD
 var currentPosition;
 function showLocation(position) {
-	currentPosition = position;
-=======
-function showLocation(position) {
->>>>>>> 40c5bde82646bb33c1dbb1ef36fdece80e2a0f15
 	var map = initMap({lat: position.coords.latitude, lng: position.coords.longitude});
 	// Use real host instead of localhost 
 	$.ajax({
@@ -63,10 +45,6 @@ function showLocation(position) {
 			visualizeLostThings(testData, map);
 		}
 	});
-<<<<<<< HEAD
-	
-=======
->>>>>>> 40c5bde82646bb33c1dbb1ef36fdece80e2a0f15
 } 
 
 function initMap(coord) {
@@ -74,18 +52,13 @@ function initMap(coord) {
     center: coord,
     zoom: 12
   });
-<<<<<<< HEAD
   map_var = map;
-=======
-  
->>>>>>> 40c5bde82646bb33c1dbb1ef36fdece80e2a0f15
   return map;
 }
 
 $(function(){
 	getLocation();	
 });
-<<<<<<< HEAD
 
 var LostThing = function() {
 	this.coord = {
@@ -115,6 +88,3 @@ function message(){
 	})
 
 }
-
-=======
->>>>>>> 40c5bde82646bb33c1dbb1ef36fdece80e2a0f15
