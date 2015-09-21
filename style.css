@@ -14,3 +14,26 @@ width: 100%;
 height: 55px;
 background-color: rgba(255, 51, 51, 0.8);
  }
+ 
+#messageDialog {
+	margin-left: 30px;
+}
+#title, #description, #photoURL, #contact {
+	width: 300px;
+	
+ 
+}
+
+#description {
+	height: 40px;
+}
+
+.main-dialog-class .ui-widget-header{
+	background: repeat-x scroll 34px 42px #a4cf50;
+	font-size:16px;
+	
+	}
+.main-dialog-class .ui-widget-content{
+	background-image:none;
+	background-color:#fff}
+</style>

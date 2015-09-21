@@ -7,6 +7,7 @@ app.use(express.static(__dirname));
 app.use(bodyParser.json());
 
 var testData = [];
+var realData = [];
 
 app.get('/', function (req, res) {
   res.sendFile('map.html', {root: __dirname});
@@ -18,7 +19,8 @@ app.get('/getdata', function(req, res){
 
 app.post('/add', function(req, res){
 	testData.push(req.body);
-    res.send(testData);
+	realData.push(req.body);
+    res.send(realData);
 });
 
 var server = app.listen(8080, function(){

@@ -78,6 +78,7 @@ var LostThing = function() {
 	});
 	
 	$( "#messageDialog" ).dialog({
+		dialogClass: 'main-dialog-class',
 		autoOpen: false,
 		height: 500,
 		width: 400,
@@ -96,8 +97,8 @@ var LostThing = function() {
 					type: 'POST', 
 					data: JSON.stringify(lostThing), 
 					contentType: "application/json; charset=utf-8",
-					success: function(testData){
-						visualizeLostThings(testData, map_var);		
+					success: function(realData){
+						visualizeLostThings(realData, map_var);		
 					}
 				})
 
