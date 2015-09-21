@@ -17,8 +17,12 @@ app.get('/getdata', function(req, res){
 });
 
 app.post('/add', function(req, res){
+<<<<<<< HEAD
 	testData.push(req.body);
     res.send(testData);
+=======
+	console.log(req.body);
+>>>>>>> 40c5bde82646bb33c1dbb1ef36fdece80e2a0f15
 });
 
 var server = app.listen(8080, function(){
@@ -40,7 +44,10 @@ var LostThing = function() {
 	this.photoURL = '';
 }
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> 40c5bde82646bb33c1dbb1ef36fdece80e2a0f15
 var lostThing = new LostThing();
 lostThing.coord.lat = 47.593367;
 lostThing.coord.lng = -122.125279;
@@ -57,6 +64,10 @@ lostThing.title = 'Dog';
 lostThing.description = 'I was swimming on kayak with my dog. And it dissapeared...';
 lostThing.photoURL = 'http://www.splotchy.com/images/blog/puppy.jpg';
 lostThing.contact = 'b@gmail.com';
+<<<<<<< HEAD
 testData.push(lostThing);
 
 
+=======
+testData.push(lostThing);
+>>>>>>> 40c5bde82646bb33c1dbb1ef36fdece80e2a0f15
