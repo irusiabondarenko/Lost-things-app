@@ -36,6 +36,7 @@ function getLocation() {
 }
 var currentPosition;
 function showLocation(position) {
+	currentPosition = position;
 	var map = initMap({lat: position.coords.latitude, lng: position.coords.longitude});
 	// Use real host instead of localhost 
 	$.ajax({
@@ -71,12 +72,49 @@ var LostThing = function() {
 	this.photoURL = '';
 }
 
+		
+	$( "#writeMessage" ).click(function() {
+		$( "#messageDialog" ).dialog( "open" ); 
+	});
+	
+	$( "#messageDialog" ).dialog({
+		autoOpen: false,
+		height: 500,
+		width: 400,
+		modal: true,
+		buttons: {
+			"Save": function() {
+				var lostThing = new LostThing();
+				lostThing.title = $('#title').val();
+				lostThing.description = $('#description').val();
+				lostThing.photoURL = $('#photoURL').val();
+				lostThing.concat = $('#contact').val();
+				lostThing.coord = {lat: currentPosition.coords.latitude, lng: currentPosition.coords.longitude};
+				$( this ).dialog( "close" );
+				$.ajax({
+					url: 'http://localhost:8080/add', 
+					type: 'POST', 
+					data: JSON.stringify(lostThing), 
+					contentType: "application/json; charset=utf-8",
+					success: function(testData){
+						visualizeLostThings(testData, map_var);		
+					}
+				})
 
-function message(){
-	var lostThing = new LostThing();
+			},
+			"Cancel": function() {
+				$( this ).dialog( "close" );
+			}
+		},
+					
+	});
+		 
+				
+			
+	/*var lostThing = new LostThing();
     lostThing.coord = {lat: currentPosition.coords.latitude, lng: currentPosition.coords.longitude};
 	lostThing.title = prompt("Enter title");
-	//testData.push(lostThing);
+	
     $.ajax({
 		url: 'http://localhost:8080/add', 
 		type: 'POST', 
@@ -85,6 +123,5 @@ function message(){
 		success: function(testData){
 			visualizeLostThings(testData, map_var);		
 		}
-	})
+	})*/
 
-}
