@@ -13,13 +13,15 @@ function getLostThingContent(lostThing){
 var map_var;
 function visualizeLostThings(lostThings, map){
 	lostThings.forEach(function(item){
-		
+		var image = "icon.gif"
 		var marker = new google.maps.Marker({
 			position: item.coord,
 			map: map,
+			icon: image,
 			title: item.title,
 			animation: google.maps.Animation.DROP,
 		});
+		
 		var infowindow = new google.maps.InfoWindow({
 			content: getLostThingContent(item)
 		});
@@ -53,6 +55,7 @@ function initMap(coord) {
     center: coord,
     zoom: 12
   });
+  
   map_var = map;
   return map;
 }
