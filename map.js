@@ -2,7 +2,7 @@
 
 // TODO: Use AngularJS
 var map, map_var, latLng;
-var myLocation = true;
+var myLocation;
 function initMap(coord) {
    map = new google.maps.Map(document.getElementById('map'), {
     center: coord,
@@ -15,6 +15,7 @@ function initMap(coord) {
 var latNew, lngNew;
 function setMark() {
 	 map.addListener('click', function(e) {
+		 openDialog();
 		placeMarkerAndPanTo(e.latLng, map);	
 	  });
 	
@@ -28,7 +29,7 @@ function setMark() {
 	  latNew = latLng.H;
 	  lngNew = latLng.L;
 	  map.panTo(latLng);
-	  openDialog();
+	  
 	}
 }
 
@@ -115,7 +116,7 @@ var LostThing = function() {
                     $( this ).dialog( "close" );
 				},
 				"Use my location": function() {
-					
+					myLocation = true;
 					openDialog();
 					$( this ).dialog( "close" );
 				}
@@ -146,8 +147,8 @@ var LostThing = function() {
 					lostThing.coord = {lat: currentPosition.coords.latitude, lng: currentPosition.coords.longitude};
 					} 
 					if (myLocation==false) {
-					lostThing.coord = {lat: latNew, lng: lngNew};}
-					
+					lostThing.coord = {lat: latNew, lng: lngNew};
+					}
 					
 					$( this ).dialog( "close" );
 					$.ajax({
@@ -159,17 +160,26 @@ var LostThing = function() {
 							visualizeLostThings(realData, map_var);		
 						}
 					})
-
+                    $('#title').val("");
+					$('#description').val("");
+					$('#photoURL').val("");
+					$('#contact').val("");
 				},
 				"Cancel": function() {
+					$('#title').val("");
+					$('#description').val("");
+					$('#photoURL').val("");
+					$('#contact').val("");
 					$( this ).dialog( "close" );
-				}
+				},
+				
 			},
 						
 		});
 		$( "#messageDialog" ).dialog( "open");
+			
+	
 	}
 	
-	
-			
+
 

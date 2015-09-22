@@ -7,7 +7,7 @@ app.use(express.static(__dirname));
 app.use(bodyParser.json());
 
 var testData = [];
-var realData = [];
+//var realData = [];
 
 app.get('/', function (req, res) {
   res.sendFile('map.html', {root: __dirname});
@@ -18,6 +18,7 @@ app.get('/getdata', function(req, res){
 });
 
 app.post('/add', function(req, res){
+	var realData = [];
 	testData.push(req.body);
 	realData.push(req.body);
     res.send(realData);
