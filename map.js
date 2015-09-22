@@ -1,34 +1,35 @@
 
 
 // TODO: Use AngularJS
-
-var map_var;
-var latLng;
+var map, map_var, latLng;
+var myLocation = true;
 function initMap(coord) {
-  var map = new google.maps.Map(document.getElementById('map'), {
+   map = new google.maps.Map(document.getElementById('map'), {
     center: coord,
     zoom: 12
   });
-  map.addListener('click', function(e) {
-    placeMarkerAndPanTo(e.latLng, map);
-	
-  });
-  
+ 
   map_var = map;
   return map;
 }
 var latNew, lngNew;
-function placeMarkerAndPanTo(latLng, map) {
-  var marker = new google.maps.Marker({
-    position: latLng,
-    map: map,
-	icon: image,
+function setMark() {
+	 map.addListener('click', function(e) {
+		placeMarkerAndPanTo(e.latLng, map);	
+	  });
 	
-  });
-  latNew = latLng.H;
-  lngNew = latLng.L;
-  map.panTo(latLng);
-  openDialog();
+	function placeMarkerAndPanTo(latLng, map) {
+	  var marker = new google.maps.Marker({
+		position: latLng,
+		map: map,
+		icon: image,
+		
+	  });
+	  latNew = latLng.H;
+	  lngNew = latLng.L;
+	  map.panTo(latLng);
+	  openDialog();
+	}
 }
 
 function getLostThingContent(lostThing){
@@ -95,8 +96,35 @@ var LostThing = function() {
 	this.contact = '';
 	this.photoURL = '';
 }
+	$("#writeMessage").click(function(){ 
+	showOptions()
+				 
+	});
     
-	$( "#writeMessage" ).click(function() {openDialog()});
+	function showOptions() {
+		$( "#optionDialog" ).dialog({
+			dialogClass: 'main-dialog-class',
+			autoOpen: false,
+			height: 200,
+			width: 300,
+			modal: true,
+			buttons: {
+				"Set mark on the map": function() {
+					myLocation = false;
+					setMark();
+                    $( this ).dialog( "close" );
+				},
+				"Use my location": function() {
+					
+					openDialog();
+					$( this ).dialog( "close" );
+				}
+			}
+						
+		});
+		$( "#optionDialog" ).dialog( "open" );
+	}
+		
 	
 	function openDialog() {
 	  
@@ -109,12 +137,16 @@ var LostThing = function() {
 			buttons: {
 				"Save": function() {
 					var lostThing = new LostThing();
+					
 					lostThing.title = $('#title').val();
 					lostThing.description = $('#description').val();
 					lostThing.photoURL = $('#photoURL').val();
 					lostThing.concat = $('#contact').val();
-					//lostThing.coord = {lat: currentPosition.coords.latitude, lng: currentPosition.coords.longitude};
-					lostThing.coord = {lat: latNew, lng: lngNew};
+				    if (myLocation==true) {
+					lostThing.coord = {lat: currentPosition.coords.latitude, lng: currentPosition.coords.longitude};
+					} 
+					if (myLocation==false) {
+					lostThing.coord = {lat: latNew, lng: lngNew};}
 					
 					
 					$( this ).dialog( "close" );
@@ -138,6 +170,6 @@ var LostThing = function() {
 		$( "#messageDialog" ).dialog( "open");
 	}
 	
-		 
+	
 			
 
