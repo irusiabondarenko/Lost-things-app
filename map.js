@@ -6,7 +6,6 @@ var myLocation;
 var mapListener;
 var latLng;
 var latNew, lngNew;
-
 function initMap(coord) {
    map = new google.maps.Map(document.getElementById('map'), {
     center: coord,
@@ -22,25 +21,22 @@ function setMark() {
     var listener1 =  map.addListener('click', function(e) {
 		 openDialog();
 		 latLng = e.latLng;
+		 latNew = latLng.H;
+	  lngNew = latLng.L;
 		 google.maps.event.removeListener(listener1);
 	});
 	
 	
 		
 }  
-	function placeMarkerAndPanTo(latLng, map) {
-	  var marker = new google.maps.Marker({
-		position: latLng,
-		map: map,
-		icon: image,
-		
-	  });
-	  latNew = latLng.H;
-	  lngNew = latLng.L;
-	  map.panTo(latLng);
-	  
-
-	}
+	//function placeMarkerAndPanTo(latLng, map) {
+	 // var marker = new google.maps.Marker({
+		//position: latLng,
+		//map: map,
+		//icon: image,
+	  //});
+	 // map.panTo(latLng);
+	//}
 	
 
 	
@@ -54,14 +50,14 @@ function getLostThingContent(lostThing){
 	return titleDiv + descriptionDiv + photoImg + contactDiv;
 };
 
-var image = "icon.gif";
+//var image = "icon.gif";
 function visualizeLostThings(lostThings, map){
 	lostThings.forEach(function(item){
 		
 		var marker = new google.maps.Marker({
 			position: item.coord,
 			map: map,
-			icon: image,
+			//icon: image,
 			title: item.title,
 			animation: google.maps.Animation.DROP,
 		});
@@ -90,7 +86,9 @@ function showLocation(position) {
 		url: 'http://localhost:8080/getdata',
 		success: function(data) {
 			var testData = data;
-			visualizeLostThings(testData, map);
+			
+				visualizeLostThings(testData, map);
+			
 		}
 	});
 } 
@@ -150,9 +148,8 @@ var LostThing = function() {
 			modal: true,
 			buttons: {
 				"Save": function() {
-					$( this ).dialog( "close" );				
-					placeMarkerAndPanTo(latLng, map);
-						
+					$( this ).dialog( "close" );
+					//placeMarkerAndPanTo(latLng, map);	
 					var lostThing = new LostThing();
 					lostThing.title = $('#title').val();
 					lostThing.description = $('#description').val();
