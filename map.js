@@ -3,6 +3,10 @@
 // TODO: Use AngularJS
 var map, map_var, latLng;
 var myLocation;
+var mapListener;
+var latLng;
+var latNew, lngNew;
+
 function initMap(coord) {
    map = new google.maps.Map(document.getElementById('map'), {
     center: coord,
@@ -12,14 +16,18 @@ function initMap(coord) {
   map_var = map;
   return map;
 }
-var latNew, lngNew;
+
 function setMark() {
 	
-	var listener1 =  map.addListener('click', function(e) {
+    var listener1 =  map.addListener('click', function(e) {
 		 openDialog();
-		placeMarkerAndPanTo(e.latLng, map);	
-	  });
+		 latLng = e.latLng;
+		 google.maps.event.removeListener(listener1);
+	});
 	
+	
+		
+}  
 	function placeMarkerAndPanTo(latLng, map) {
 	  var marker = new google.maps.Marker({
 		position: latLng,
@@ -30,11 +38,12 @@ function setMark() {
 	  latNew = latLng.H;
 	  lngNew = latLng.L;
 	  map.panTo(latLng);
-	  google.maps.event.removeListener(listener1);
+	  
 
 	}
+	
 
-	}
+	
 
 
 function getLostThingContent(lostThing){
@@ -141,8 +150,10 @@ var LostThing = function() {
 			modal: true,
 			buttons: {
 				"Save": function() {
+					$( this ).dialog( "close" );				
+					placeMarkerAndPanTo(latLng, map);
+						
 					var lostThing = new LostThing();
-					
 					lostThing.title = $('#title').val();
 					lostThing.description = $('#description').val();
 					lostThing.photoURL = $('#photoURL').val();
@@ -154,7 +165,7 @@ var LostThing = function() {
 					lostThing.coord = {lat: latNew, lng: lngNew};
 					}
 					
-					$( this ).dialog( "close" );
+					
 					$.ajax({
 						url: 'http://localhost:8080/add', 
 						type: 'POST', 
