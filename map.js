@@ -14,7 +14,8 @@ function initMap(coord) {
 }
 var latNew, lngNew;
 function setMark() {
-	 map.addListener('click', function(e) {
+	
+	var listener1 =  map.addListener('click', function(e) {
 		 openDialog();
 		placeMarkerAndPanTo(e.latLng, map);	
 	  });
@@ -29,9 +30,12 @@ function setMark() {
 	  latNew = latLng.H;
 	  lngNew = latLng.L;
 	  map.panTo(latLng);
-	  
+	  google.maps.event.removeListener(listener1);
+
 	}
-}
+
+	}
+
 
 function getLostThingContent(lostThing){
 	var titleDiv = '<div>' + lostThing.title + '</div>';
