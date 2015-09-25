@@ -46,9 +46,11 @@ function deleteThing() {
 		type: 'POST', 
 		data: JSON.stringify(currentMarker.position), 
 		contentType: "application/json; charset=utf-8",
-		//success: //function(testData){
+		success: 
 		   //visualizeLostThings(testData, map_var);		
 		//}
+	     document.location.reload(true)
+	
 	})
 }
 			
