@@ -1,6 +1,4 @@
 
-
-// TODO: Use AngularJS
 var map, map_var, latLng;
 var myLocation;
 var mapListener;
@@ -29,48 +27,52 @@ function setMark() {
 	
 		
 }  
-	//function placeMarkerAndPanTo(latLng, map) {
-	 // var marker = new google.maps.Marker({
-		//position: latLng,
-		//map: map,
-		//icon: image,
-	  //});
-	 // map.panTo(latLng);
-	//}
 	
-
-	
-
-
 function getLostThingContent(lostThing){
 	var titleDiv = '<div>' + lostThing.title + '</div>';
 	var descriptionDiv = '<div>' + lostThing.description + '</div>';
 	var photoImg = '<img src="' + lostThing.photoURL + '"></img>';
 	var contactDiv = '<div>' +  lostThing.contact +'</div>';
-	return titleDiv + descriptionDiv + photoImg + contactDiv;
+	var deleteLostThing = '<button onclick="deleteThing()">Delete</button>';
+	return titleDiv + descriptionDiv + photoImg + contactDiv + deleteLostThing;
+	
 };
 
-//var image = "icon.gif";
+var currentMarker;
+
+function deleteThing() {
+	$.ajax({
+		url: 'http://localhost:8080/delete', 
+		type: 'POST', 
+		data: JSON.stringify(currentMarker.position), 
+		contentType: "application/json; charset=utf-8",
+		//success: //function(testData){
+		   //visualizeLostThings(testData, map_var);		
+		//}
+	})
+}
+			
+var image = "icon.gif";
 function visualizeLostThings(lostThings, map){
 	lostThings.forEach(function(item){
-		
 		var marker = new google.maps.Marker({
 			position: item.coord,
 			map: map,
-			//icon: image,
+			icon: image,
 			title: item.title,
 			animation: google.maps.Animation.DROP,
 		});
-		
 		var infowindow = new google.maps.InfoWindow({
 			content: getLostThingContent(item)
 		});
 		marker.addListener('click', function(){
 			infowindow.open(map, marker);
+			currentMarker = this;
 		});
-		
+			
 	});
 }
+			
 function getLocation() {
 	if(navigator.geolocation){
 		navigator.geolocation.getCurrentPosition(showLocation);
@@ -189,7 +191,7 @@ var LostThing = function() {
 						
 		});
 		$( "#messageDialog" ).dialog( "open");
-			
+		
 	
 	}
 	

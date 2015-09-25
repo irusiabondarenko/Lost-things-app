@@ -24,6 +24,25 @@ app.post('/add', function(req, res){
     res.send(realData);
 });
 
+app.post('/delete', function(req, res){
+	//console.log(req.body.H);
+	var roundLng = Math.round(req.body.L*1000000)/1000000;
+	//console.log(roundLng);
+	//console.log(testData[1].coord.lng)
+	//console.log(testData[1].coord.lat)
+	
+	
+	for(var i = 0; i<testData.length; i++) {
+		if ((req.body.H==testData[i].coord.lat)&&(roundLng==testData[i].coord.lng)) {
+		 testData.splice(i, 1);
+		}
+	
+    //res.send(testData);
+	}
+	console.log(testData);
+//}
+});
+
 var server = app.listen(8080, function(){
   var host = server.address().address;
   var port = server.address().port;
