@@ -25,15 +25,13 @@ app.post('/add', function(req, res){
 });
 
 app.post('/delete', function(req, res){
-	//console.log(req.body.H);
 	var roundLng = Math.round(req.body.L*1000000)/1000000;
-	//console.log(roundLng);
-	//console.log(testData[1].coord.lng)
-	//console.log(testData[1].coord.lat)
-	
+	var roundLat = Math.round(req.body.H*1000000)/1000000;
 	
 	for(var i = 0; i<testData.length; i++) {
-		if ((req.body.H==testData[i].coord.lat)&&(roundLng==testData[i].coord.lng)) {
+		var roundCurrentLat = Math.round(testData[i].coord.lat*1000000)/1000000;
+		var roundCurrentLng = Math.round(testData[i].coord.lng*1000000)/1000000;
+		if ((roundLat==roundCurrentLat)&&(roundLng==roundCurrentLng)) {
 		 testData.splice(i, 1);
 		}
 	
