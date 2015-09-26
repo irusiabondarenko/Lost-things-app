@@ -5,14 +5,36 @@ var mapListener;
 var latLng;
 var latNew, lngNew;
 function initMap(coord) {
-   map = new google.maps.Map(document.getElementById('map'), {
-    center: coord,
-    zoom: 12
-  });
+	var style = [
+  {
+    "featureType": "road",
+    "elementType": "geometry",
+    "stylers": [
+      { "color": "#ffffff" }
+    ]
+  },{
+    "featureType": "water",
+    "stylers": [
+      { "color": "#40a5ff" },
+      { "hue": "#00a1ff" }
+    ]
+  },{
+  }
+]
+ var myOptions = {
+        zoom: 12,
+        center: coord,
+        mapTypeId: google.maps.MapTypeId.ROADMAP,
+        styles: style
+    };
+  map = new google.maps.Map(document.getElementById("map"),
+        myOptions);
  
   map_var = map;
   return map;
 }
+
+
 
 function setMark() {
 	
@@ -203,5 +225,23 @@ var LostThing = function() {
     $(this).css("color", "");
 });
 
+var styles = [
+  {
+    "featureType": "road",
+    "elementType": "geometry",
+    "stylers": [
+      { "color": "#ffffff" }
+    ]
+  },{
+    "featureType": "water",
+    "stylers": [
+      { "color": "#40a5ff" },
+      { "hue": "#00a1ff" }
+    ]
+  },{
+  }
+]
+
+map_var.setOptions({styles: styles});
 
 
