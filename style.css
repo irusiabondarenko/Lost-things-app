@@ -1,29 +1,39 @@
 html, body {
-        height: 100%;
-        margin: 0;
-        padding: 0;
+	height:100%;
+    padding:0;
+    margin:0;
       }
-      #map {
-        height: 100%;
+#map {
+	height: -moz-calc(100% - 40px);
+	height: -webkit-calc(100% - 40px);
+	height: calc(100%-40px);
+	display:block;
+}
 
-      }
-
- header {
- 	
-width: 100%;
-height: 55px;
-background-color: rgba(255, 51, 51, 0.8);
+ #header {
+	width: 100%;
+	height: 40px;
+	background-color: rgba(255, 51, 51, 0.8);
  }
+ #writeMessage {
+	 float: right;
+	 margin-right: 30px;
+	 height: 40px;
+	 border-width: 0px;
+	 background-color: rgba(255, 51, 51, 0.0);
+	 font-size: 20px;
+	 color: white;
+	 font-family:  Helvetica, Arial, sans-serif;
+     font-weight: 400;
+ }
+ 
  
 #messageDialog {
 	margin-left: 30px;
 	display: none;
 }
-
 #title, #description, #photoURL, #contact {
 	width: 300px;
-	
- 
 }
 
 #description {
