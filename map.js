@@ -197,5 +197,11 @@ var LostThing = function() {
 	
 	}
 	
+	$(".nav-item").hover(function(){
+    $(this).css("color", "white");
+    }, function(){
+    $(this).css("color", "");
+});
+
 
 
