@@ -65,22 +65,31 @@ function getLostThingContent(lostThing){
                   '</div>';	
 };
 
-var currentMarker;
+var curMarker;			
+var image = "icon.png";
+
+function guid() {
+  function s4() {
+    return Math.floor((1 + Math.random()) * 0x10000)
+      .toString(16)
+      .substring(1);
+  }
+  return s4() + s4() + '-' + s4() + '-' + s4() + '-' +
+    s4() + '-' + s4() + s4() + s4();
+}
 
 function deleteThing() {
+	
 	$.ajax({
 		url: 'http://localhost:8080/delete', 
 		type: 'POST', 
-		data: JSON.stringify(currentMarker.coord), 
+		data: JSON.stringify ({unique_id: curMarker.markerId}), 
 		contentType: "application/json; charset=utf-8",
-		success: document.location.reload(true)
+		success: 
+	     document.location.reload(true)
 	
 	})
-
 }
-			
-var image = "icon.gif";
-
 function visualizeLostThings(lostThings, map){
 	lostThings.forEach(function(item){
 		var marker = new google.maps.Marker({
@@ -89,6 +98,7 @@ function visualizeLostThings(lostThings, map){
 			icon: image,
 			title: item.title,
 			animation: google.maps.Animation.DROP,
+			markerId: item.unique_id 
 			
 		});
 		var infowindow = new google.maps.InfoWindow({
@@ -99,7 +109,7 @@ function visualizeLostThings(lostThings, map){
 		
 		marker.addListener('click', function(){
 			infowindow.open(map, marker);
-			currentMarker = this;
+			curMarker = this;
 		});
 		
 		google.maps.event.addListener(infowindow, 'domready', function() {	
@@ -118,6 +128,8 @@ function visualizeLostThings(lostThings, map){
 				
 	});
 }
+
+
 			
 function getLocation() {
 	if(navigator.geolocation){
@@ -154,6 +166,7 @@ var LostThing = function() {
 	this.description = '';
 	this.contact = '';
 	this.photoURL = '';
+	this.unique_id = guid();
 }
 	$("#writeMessage").click(function(){ 
 	showOptions()
@@ -162,7 +175,7 @@ var LostThing = function() {
     
 	function showOptions() {
 		$( "#optionDialog" ).dialog({
-			dialogClass: 'main-dialog-class', 
+			dialogClass: 'optionDialog', 
 			autoOpen: false,
 			height: 50,
 			width: 520,
@@ -200,7 +213,7 @@ var LostThing = function() {
 					lostThing.title = $('#title').val();
 					lostThing.description = $('#description').val();
 					lostThing.photoURL = $('#photoURL').val();
-					lostThing.concat = $('#contact').val();
+					lostThing.contact = $('#contact').val();
 				    if (myLocation==true) {
 					lostThing.coord = {lat: currentPosition.coords.latitude, lng: currentPosition.coords.longitude};
 					} 
@@ -239,7 +252,7 @@ var LostThing = function() {
 	
 	}
 	
-	$(".nav-item").hover(function(){
+$(".nav-anchor").hover(function(){
     $(this).css("color", "white");
     }, function(){
     $(this).css("color", "");
