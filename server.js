@@ -1,52 +1,79 @@
 var express = require('express');
 var bodyParser = require('body-parser')
+var mongodb = require('mongodb'); 
+var MongoClient = mongodb.MongoClient;
 
-var app = express();
-
-app.use(express.static(__dirname));
-app.use(bodyParser.json());
-
+var mongoUrl = 'mongodb://127.0.0.1:27017/seekout';
 var testData = [];
-//var realData = [];
 
-app.get('/', function (req, res) {
-  res.sendFile('map.html', {root: __dirname});
-});
+MongoClient.connect(mongoUrl, function(err, db){
+  if(err) {
+	 console.log('Unable to connect to the mongoDB server. Error:', err);
+  } else {
+    //HURRAY!! We are connected. :)
+    console.log('Connection established to', mongoUrl);
 
-app.get('/getdata', function(req, res){
-	res.send(testData);
-});
-
-app.post('/add', function(req, res){
-	var realData = [];
-	testData.push(req.body);
-	realData.push(req.body);
-    res.send(realData);
-});
-
-app.post('/delete', function(req, res){
-	var roundLng = Math.round(req.body.L*1000000)/1000000;
-	var roundLat = Math.round(req.body.H*1000000)/1000000;
+	var collection = db.collection('lostThings');
 	
-	for(var i = 0; i<testData.length; i++) {
-		var roundCurrentLat = Math.round(testData[i].coord.lat*1000000)/1000000;
-		var roundCurrentLng = Math.round(testData[i].coord.lng*1000000)/1000000;
-		if ((roundLat==roundCurrentLat)&&(roundLng==roundCurrentLng)) {
-		 testData.splice(i, 1);
+	
+	var app = express();
+
+	app.use(express.static(__dirname));
+	app.use(bodyParser.json());
+
+
+	//var realData = [];
+
+	app.get('/', function (req, res) {
+	  res.sendFile('map.html', {root: __dirname});
+	});
+
+	app.get('/getdata', function(req, res){
+		res.send(testData);
+	});
+
+	app.post('/add', function(req, res){
+		var realData = [];
+		//testData.push(req.body);
+		collection.insert(req.body, function(err, result){
+			if(err) {
+				console.log('Error inserting data into db');
+				console.log(err);
+				console.log(result)
+			}
+		});
+		realData.push(req.body);
+		res.send(realData);
+	});
+
+	app.post('/delete', function(req, res){
+		var roundLng = Math.round(req.body.L*1000000)/1000000;
+		var roundLat = Math.round(req.body.H*1000000)/1000000;
+		
+		for(var i = 0; i<testData.length; i++) {
+			var roundCurrentLat = Math.round(testData[i].coord.lat*1000000)/1000000;
+			var roundCurrentLng = Math.round(testData[i].coord.lng*1000000)/1000000;
+			if ((roundLat==roundCurrentLat)&&(roundLng==roundCurrentLng)) {
+			 testData.splice(i, 1);
+			}
+		
+		//res.send(testData);
 		}
-	
-    //res.send(testData);
-	}
-	console.log(testData);
-//}
+		console.log(testData);
+	//}
+	});
+
+	var server = app.listen(8080, function(){
+	  var host = server.address().address;
+	  var port = server.address().port;
+
+	  console.log('Example app listening at http://%s:%s', host, port);
+	});
+
+  }
 });
 
-var server = app.listen(8080, function(){
-  var host = server.address().address;
-  var port = server.address().port;
 
-  console.log('Example app listening at http://%s:%s', host, port);
-});
 
 
 var LostThing = function() {

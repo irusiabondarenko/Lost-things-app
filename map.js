@@ -51,13 +51,18 @@ function setMark() {
 }  
 	
 function getLostThingContent(lostThing){
-	var titleDiv = '<div>' + lostThing.title + '</div>';
-	var descriptionDiv = '<div>' + lostThing.description + '</div>';
-	var photoImg = '<img src="' + lostThing.photoURL + '"></img>';
-	var contactDiv = '<div>' +  lostThing.contact +'</div>';
-	var deleteLostThing = '<button onclick="deleteThing()">Delete</button>';
-	return titleDiv + descriptionDiv + photoImg + contactDiv + deleteLostThing;
-	
+	return '<div id="iw-container">' +
+				'<div class = "iw-title">' + lostThing.title + '</div>' +
+					'<div class="iw-content">' +
+					'<div class="iw-subTitle">Description</div>' +
+					 '<img id = "picture" src="' + lostThing.photoURL + '"></img>'+
+					'<p>' + lostThing.description + '</p>'+
+					'<div class="iw-subTitle">Contacts</div>' +
+					'<p>' +  lostThing.contact + '</p>' +
+					'<button id = "deleteButton" onclick="deleteThing()">Delete</button>' +
+                    '</div>' +
+                    '<div class="iw-bottom-gradient"></div>' +
+                  '</div>';	
 };
 
 var currentMarker;
@@ -66,17 +71,16 @@ function deleteThing() {
 	$.ajax({
 		url: 'http://localhost:8080/delete', 
 		type: 'POST', 
-		data: JSON.stringify(currentMarker.position), 
+		data: JSON.stringify(currentMarker.coord), 
 		contentType: "application/json; charset=utf-8",
-		success: 
-		   //visualizeLostThings(testData, map_var);		
-		//}
-	     document.location.reload(true)
+		success: document.location.reload(true)
 	
 	})
+
 }
 			
 var image = "icon.gif";
+
 function visualizeLostThings(lostThings, map){
 	lostThings.forEach(function(item){
 		var marker = new google.maps.Marker({
@@ -85,15 +89,33 @@ function visualizeLostThings(lostThings, map){
 			icon: image,
 			title: item.title,
 			animation: google.maps.Animation.DROP,
+			
 		});
 		var infowindow = new google.maps.InfoWindow({
-			content: getLostThingContent(item)
+			content: getLostThingContent(item),
+			mixWidth: 350,
+		
 		});
+		
 		marker.addListener('click', function(){
 			infowindow.open(map, marker);
 			currentMarker = this;
 		});
-			
+		
+		google.maps.event.addListener(infowindow, 'domready', function() {	
+			var iwOuter = $('.gm-style-iw');
+			var iwBackground = iwOuter.prev();
+
+			iwBackground.children(':nth-child(2)').css({'display' : 'none'});
+			iwBackground.children(':nth-child(4)').css({'display' : 'none'});
+			iwOuter.parent().parent().css({left: '115px'});
+			iwBackground.children(':nth-child(1)').attr('style', function(i,s){ return s + 'left: 76px !important;'});
+			iwBackground.children(':nth-child(3)').attr('style', function(i,s){ return s + 'left: 76px !important;'});
+			iwBackground.children(':nth-child(3)').find('div').children().css({'box-shadow': 'rgba(72, 181, 233, 0.6) 0px 1px 6px', 'z-index' : '1'});
+			var iwCloseBtn = iwOuter.next();
+			iwCloseBtn.css({opacity: '1', right: '38px', top: '3px', border: '7px solid #48b5e9', 'border-radius': '13px', 'box-shadow': '0 0 5px #3990B9'});		
+		});
+				
 	});
 }
 			
@@ -107,7 +129,6 @@ function showLocation(position) {
 	currentPosition = position;
 	var map = initMap({lat: position.coords.latitude, lng: position.coords.longitude});
 	
-	// Use real host instead of localhost 
 	$.ajax({
 		url: 'http://localhost:8080/getdata',
 		success: function(data) {
@@ -141,10 +162,10 @@ var LostThing = function() {
     
 	function showOptions() {
 		$( "#optionDialog" ).dialog({
-			dialogClass: 'main-dialog-class',
+			dialogClass: 'main-dialog-class', 
 			autoOpen: false,
-			height: 200,
-			width: 300,
+			height: 50,
+			width: 520,
 			modal: true,
 			buttons: {
 				"Set mark on the map": function() {
@@ -152,7 +173,7 @@ var LostThing = function() {
 					setMark();
                     $( this ).dialog( "close" );
 				},
-				"Use my location": function() {
+				"Use my current location": function() {
 					myLocation = true;
 					openDialog();
 					$( this ).dialog( "close" );
@@ -167,15 +188,14 @@ var LostThing = function() {
 	function openDialog() {
 	  
 		$( "#messageDialog" ).dialog({
-			dialogClass: 'main-dialog-class',
+			dialogClass: 'main-dialog-class', 
 			autoOpen: false,
-			height: 500,
-			width: 400,
+			height: 365,
+			width: 359,
 			modal: true,
 			buttons: {
 				"Save": function() {
 					$( this ).dialog( "close" );
-					//placeMarkerAndPanTo(latLng, map);	
 					var lostThing = new LostThing();
 					lostThing.title = $('#title').val();
 					lostThing.description = $('#description').val();
@@ -225,23 +245,5 @@ var LostThing = function() {
     $(this).css("color", "");
 });
 
-var styles = [
-  {
-    "featureType": "road",
-    "elementType": "geometry",
-    "stylers": [
-      { "color": "#ffffff" }
-    ]
-  },{
-    "featureType": "water",
-    "stylers": [
-      { "color": "#40a5ff" },
-      { "hue": "#00a1ff" }
-    ]
-  },{
-  }
-]
-
-map_var.setOptions({styles: styles});
 
 
