@@ -62,7 +62,11 @@ html, body {
 	margin-left: 10px;
 }
 #howtouseDialog {
+	margin-top: 15px;
 	display: none;
+	font-family: "Gotham Rounded A", "Gotham Rounded B", Helvetica, Arial, sans-serif;
+}
+#howtouseDialog p {
 	font-family: "Gotham Rounded A", "Gotham Rounded B", Helvetica, Arial, sans-serif;
 }
 #title, #description, #photoURL, #contact {
@@ -70,16 +74,23 @@ html, body {
 }
 
 #description {
-	height: 40px;
+	height: 60px;
+	font-size: 15px;
 }
 #feedbackDescription{
-	height: 80px;
+margin-left: 15px;
+width: 380px;
+height: 80px;
+font-family: "Gotham Rounded A", "Gotham Rounded B", Helvetica, Arial, sans-serif;
+font-size: 15px;
 	
 }
-
-.ui-dialog-title {
-	font-family: "Gotham Rounded A", "Gotham Rounded B", Helvetica, Arial, sans-serif;
+#hello {
+	font-size: 18px;
+	text-align: center;
+	color: rgb(255, 88, 88)
 }
+
 .howToUseClass .ui-widget-header{
 	background: repeat-x scroll 34px 42px rgba(255, 51, 51, 0.8);
 }
@@ -109,17 +120,33 @@ ol {
 	font-size: 18px;
 	text-align: center;
 }
-.messageDialogClass .ui-widget-header{
+#feedbackDialog p {
+	margin: 13px;
+	font-size: 15px;
+}
+.messageDialogClass .ui-widget-header, .feedbackDialogClass .ui-widget-header, .thankYouDialogClass .ui-widget-header{
 	height: 30px;
 	background: repeat-x scroll 44px 48px rgba(255, 51, 51, 0.8);
 	font-size:17px;
-	color: white;
-	
-	
-	
+	color: white;		
 	}
+.thankYouDialogClass .ui-dialog-title {
+	margin-top: 4px;
+	font-size: 18px;
+    font-family: "Gotham Rounded A", "Gotham Rounded B", Helvetica, Arial, sans-serif;
+	}
+.feedbackDialogClass .ui-dialog-title {
+	margin-top: 4px;
+	margin-left: 130px;
+	font-size: 18px;
+    font-family: "Gotham Rounded A", "Gotham Rounded B", Helvetica, Arial, sans-serif;
+}
 .messageDialogClass .ui-dialog-title {
+	margin-top: 4px;
 	margin-left: 7px;
+	font-size: 17px;
+	font-family: "Gotham Rounded A", "Gotham Rounded B", Helvetica, Arial, sans-serif;
+
 }
 
 .messageDialogClass , .optionDialog, .howToUseClass {

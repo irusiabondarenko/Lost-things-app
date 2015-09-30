@@ -203,7 +203,7 @@ var LostThing = function() {
 		$( "#messageDialog" ).dialog({
 			dialogClass: 'messageDialogClass', 
 			autoOpen: false,
-			height: 377,
+			height: 410,
 			width: 362,
 			modal: true,
 			buttons: {
@@ -267,7 +267,7 @@ $("#howtouse").click(function(){
 		$( "#howtouseDialog" ).dialog({ 
 			dialogClass: 'howToUseClass', 
 			autoOpen: false,
-			height: 471,
+			height: 487,
 			width: 460,
 			modal: true,
 			buttons: {
@@ -290,8 +290,8 @@ $("#howtouse").click(function(){
 		$( "#feedbackDialog" ).dialog({ 
 			dialogClass: 'feedbackDialogClass', 
 			autoOpen: false,
-			height: 300,
-			width: 300,
+			height: 450,
+			width: 450,
 			modal: true,
 			buttons: {
 				"Send": function() {
@@ -321,7 +321,7 @@ $("#howtouse").click(function(){
 		$( "#thankYouDialog" ).dialog({ 
 			dialogClass: 'thankYouDialogClass', 
 			autoOpen: false,
-			height: 300,
+			height: 237,
 			width: 300,
 			modal: true,
 			buttons: {
