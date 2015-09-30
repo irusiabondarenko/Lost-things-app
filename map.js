@@ -175,6 +175,7 @@ var LostThing = function() {
     
 	function showOptions() {
 		$( "#optionDialog" ).dialog({
+			resizable: false,
 			dialogClass: 'optionDialog', 
 			autoOpen: false,
 			height: 50,
@@ -202,6 +203,7 @@ var LostThing = function() {
 	  
 		$( "#messageDialog" ).dialog({
 			dialogClass: 'messageDialogClass', 
+			resizable: false,
 			autoOpen: false,
 			height: 410,
 			width: 362,
@@ -265,6 +267,7 @@ $("#howtouse").click(function(){
     
 	function howToUse() {
 		$( "#howtouseDialog" ).dialog({ 
+		    resizable: false,
 			dialogClass: 'howToUseClass', 
 			autoOpen: false,
 			height: 487,
@@ -289,29 +292,34 @@ $("#howtouse").click(function(){
 	function feedback() {
 		$( "#feedbackDialog" ).dialog({ 
 			dialogClass: 'feedbackDialogClass', 
+			resizable: false,
 			autoOpen: false,
 			height: 450,
 			width: 450,
 			modal: true,
-			buttons: {
-				"Send": function() {
-					var feedbackMsg = $('#feedbackDescription').val();
-					$.ajax({
-						url: 'http://localhost:8080/mail', 
-						type: 'POST', 
-						data: JSON.stringify({message:feedbackMsg}), 
-						contentType: "application/json; charset=utf-8",
-					})
-                    $( this ).dialog( "close" );
-					thankYou();
-					
+			buttons: [{
+				text: "Send",
+				"className": "buttonDialogStyle",
+					click: function() {
+						var feedbackMsg = $('#feedbackDescription').val();
+						$.ajax({
+							url: 'http://localhost:8080/mail', 
+							type: 'POST', 
+							data: JSON.stringify({message:feedbackMsg}), 
+							contentType: "application/json; charset=utf-8",
+						})
+						$( this ).dialog( "close" );
+						thankYou();	
+					}
 				},
-				"Cancel": function() {
-					
+			{
+				"className": "buttonDialogStyle",
+				text: "Cancel",
+				click: function() {
                     $( this ).dialog( "close" );
-				},
+				}
 			}
-						
+			]			
 		});
 		$( "#feedbackDialog" ).dialog( "open" );
 	}
@@ -319,6 +327,7 @@ $("#howtouse").click(function(){
 	function thankYou() {
 		
 		$( "#thankYouDialog" ).dialog({ 
+			resizable: false,
 			dialogClass: 'thankYouDialogClass', 
 			autoOpen: false,
 			height: 237,

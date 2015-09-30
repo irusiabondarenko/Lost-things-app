@@ -12,12 +12,16 @@ html, body {
  section {
 	width: 100%;
 	height: 55px;
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr=rgba(255,88,88,0.8), endColorstr=rgba(255,88,88,1), GradientType=0 );
+	background: -o-linear-gradient(right, rgba(255,88,88,0.8), rgba(255,88,88,1));
+	background: -ms-linear-gradient(right, rgba(255,88,88,0.8), rgba(255,88,88,1));
 	background: -webkit-linear-gradient(right, rgba(255,88,88,0.8), rgba(255,88,88,1));
+	background: -moz-linear-gradient(right, rgba(255,88,88,0.8), rgba(255,88,88,1));
 	background: linear-gradient(right, rgba(252, 88, 88, 0.8), rgba(252, 88, 88, 1));
+	background: -webkit-gradient(right, rgba(255,88,88,0.8), rgba(255,88,88,1));
 	position: absolute;
 	z-index: 2;
-	box-shadow: 0px 20px  40px rgba(72, 181, 233, 0.7);
-	
+	box-shadow: 0px 20px  40px rgba(72, 181, 233, 0.7);	
  }
  
  .nav-list {
@@ -120,9 +124,19 @@ ol {
 	font-size: 18px;
 	text-align: center;
 }
+#feedbackDialog {
+	display: none;
+}
+
 #feedbackDialog p {
 	margin: 13px;
 	font-size: 15px;
+}
+#thankYouDialog {
+	display: none;
+}
+ .ui-dialog-buttonpane {
+	color: blue;
 }
 .messageDialogClass .ui-widget-header, .feedbackDialogClass .ui-widget-header, .thankYouDialogClass .ui-widget-header{
 	height: 30px;
