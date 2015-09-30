@@ -72,6 +72,10 @@ html, body {
 #description {
 	height: 40px;
 }
+#feedbackDescription{
+	height: 80px;
+	
+}
 
 .ui-dialog-title {
 	font-family: "Gotham Rounded A", "Gotham Rounded B", Helvetica, Arial, sans-serif;

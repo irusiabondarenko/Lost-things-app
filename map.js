@@ -267,8 +267,8 @@ $("#howtouse").click(function(){
 		$( "#howtouseDialog" ).dialog({ 
 			dialogClass: 'howToUseClass', 
 			autoOpen: false,
-			height: 400,
-			width: 450,
+			height: 471,
+			width: 460,
 			modal: true,
 			buttons: {
 				"OK": function() {
@@ -280,4 +280,57 @@ $("#howtouse").click(function(){
 						
 		});
 		$( "#howtouseDialog" ).dialog( "open" );
+	}
+	$("#feedback").click(function(){ 
+		feedback()
+				 
+	});
+    
+	function feedback() {
+		$( "#feedbackDialog" ).dialog({ 
+			dialogClass: 'feedbackDialogClass', 
+			autoOpen: false,
+			height: 300,
+			width: 300,
+			modal: true,
+			buttons: {
+				"Send": function() {
+					var feedbackMsg = $('#feedbackDescription').val();
+					$.ajax({
+						url: 'http://localhost:8080/mail', 
+						type: 'POST', 
+						data: JSON.stringify({message:feedbackMsg}), 
+						contentType: "application/json; charset=utf-8",
+					})
+                    $( this ).dialog( "close" );
+					thankYou();
+					
+				},
+				"Cancel": function() {
+					
+                    $( this ).dialog( "close" );
+				},
+			}
+						
+		});
+		$( "#feedbackDialog" ).dialog( "open" );
+	}
+	
+	function thankYou() {
+		
+		$( "#thankYouDialog" ).dialog({ 
+			dialogClass: 'thankYouDialogClass', 
+			autoOpen: false,
+			height: 300,
+			width: 300,
+			modal: true,
+			buttons: {
+				"Close": function() {
+					
+                    $( this ).dialog( "close" );
+				},
+			}
+						
+		});
+		$('#thankYouDialog').dialog("open");
 	}

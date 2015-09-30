@@ -1,6 +1,7 @@
 var express = require('express');
 var bodyParser = require('body-parser')
-var mongodb = require('mongodb'); 
+var mongodb = require('mongodb');
+var nodemailer = require('nodemailer'); 
 var MongoClient = mongodb.MongoClient;
 
 var mongoUrl = 'mongodb://127.0.0.1:27017/seekout';
@@ -57,6 +58,37 @@ var testData = [];
 			    collection.remove({'unique_id': removeThing})
 				
 			});
+			
+			app.post('/mail', function (req, res){
+				
+				var mailOpts, smtpTrans;
+				
+				smtpTrans = nodemailer.createTransport('SMTP', {
+				  service: 'Gmail',
+				  auth: {
+					  user: "irusiabondarenko@gmail.com",
+					  pass: "vfylfhbyf23" 
+				  }
+			  });
+			  
+			  mailOpts = {
+				  to: 'irusiabondarenko@gmail.com',
+				  text: req.body.message,
+				  subject: "Feedback from Seek-out app!"
+			  };
+			  
+			  
+			  smtpTrans.sendMail(mailOpts, function (error, response) {
+				  
+				   if (error) {
+						console.log(error);
+					} else {
+						console.log('Message sent');
+					}
+				});
+			  res.send("success")
+				
+			})
 			
 
 
