@@ -178,7 +178,7 @@ var LostThing = function() {
 			dialogClass: 'optionDialog', 
 			autoOpen: false,
 			height: 50,
-			width: 520,
+			width: 527,
 			modal: true,
 			buttons: {
 				"Set mark on the map": function() {
@@ -201,10 +201,10 @@ var LostThing = function() {
 	function openDialog() {
 	  
 		$( "#messageDialog" ).dialog({
-			dialogClass: 'main-dialog-class', 
+			dialogClass: 'messageDialogClass', 
 			autoOpen: false,
-			height: 365,
-			width: 359,
+			height: 377,
+			width: 362,
 			modal: true,
 			buttons: {
 				"Save": function() {
@@ -258,5 +258,26 @@ $(".nav-anchor").hover(function(){
     $(this).css("color", "");
 });
 
-
-
+$("#howtouse").click(function(){ 
+	howToUse()
+				 
+	});
+    
+	function howToUse() {
+		$( "#howtouseDialog" ).dialog({ 
+			dialogClass: 'howToUseClass', 
+			autoOpen: false,
+			height: 400,
+			width: 450,
+			modal: true,
+			buttons: {
+				"OK": function() {
+					
+                    $( this ).dialog( "close" );
+				},
+				
+			}
+						
+		});
+		$( "#howtouseDialog" ).dialog( "open" );
+	}
