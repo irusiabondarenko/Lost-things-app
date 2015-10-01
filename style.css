@@ -182,6 +182,8 @@ ol {
 
 .gm-style-iw {
 	max-width: 350px !important;
+	min-width: 350px !important;
+	
 	top: 15px !important;
 	left: 0px !important;
 	background-color: #fff;
@@ -209,9 +211,14 @@ ol {
 	margin-right: 1px;
 	padding: 15px 5px 20px 15px;
 	max-height: 140px;
+	overflow-y: scroll;
+	
+}
+.iw-content {
+	max-width: 330px;
 	min-width: 330px;
-	overflow-y: auto;
-	overflow-x: hidden;
+	min-height: 140px !important;
+	max-height: 140px !important;
 }
 .iw-content img {
 	float: right;
