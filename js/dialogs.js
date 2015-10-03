@@ -12,7 +12,7 @@ $("#writeMessage").click(function(){
 			width: 527,
 			modal: true,
 			buttons: {
-				"Set mark on the map": functio3n() {
+				"Set mark on the map": function() {
 					myLocation = false;
 					setMark();
                     $( this ).dialog( "close" );
