@@ -12,7 +12,7 @@ $("#writeMessage").click(function(){
 			width: 527,
 			modal: true,
 			buttons: {
-				"Set mark on the map": function() {
+				"Set mark on the map": functio3n() {
 					myLocation = false;
 					setMark();
                     $( this ).dialog( "close" );
@@ -54,7 +54,7 @@ function openDialog() {
 					
 					
 					$.ajax({
-						url: 'http://localhost:8080/add', 
+						url: window.location.origin + '/add', 
 						type: 'POST', 
 						data: JSON.stringify(lostThing), 
 						contentType: "application/json; charset=utf-8",
@@ -127,7 +127,7 @@ $("#howtouse").click(function(){
 					click: function() {
 						var feedbackMsg = $('#feedbackDescription').val();
 						$.ajax({
-							url: 'http://localhost:8080/mail', 
+							url: window.location.origin + '/mail', 
 							type: 'POST', 
 							data: JSON.stringify({message:feedbackMsg}), 
 							contentType: "application/json; charset=utf-8",

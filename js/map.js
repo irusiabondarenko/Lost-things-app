@@ -101,7 +101,7 @@ function showLocation(position) {
 	var map = initMap({lat: position.coords.latitude, lng: position.coords.longitude});
 	
 	$.ajax({
-		url: 'http://localhost:8080/getdata',
+		url: window.location.origin + '/getdata',
 		success: function(data) {
 			var testData = data;
 			

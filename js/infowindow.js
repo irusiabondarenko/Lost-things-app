@@ -29,7 +29,7 @@ function guid() {
 function deleteThing() {
 	
 	$.ajax({
-		url: 'http://localhost:8080/delete', 
+		url: window.location.origin + '/delete', 
 		type: 'POST', 
 		data: JSON.stringify ({unique_id: curMarker.markerId}), 
 		contentType: "application/json; charset=utf-8",
