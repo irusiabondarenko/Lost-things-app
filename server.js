@@ -3,8 +3,8 @@ var bodyParser = require('body-parser')
 var mongodb = require('mongodb');
 var nodemailer = require('nodemailer'); 
 var MongoClient = mongodb.MongoClient;
-
-var mongoUrl = 'mongodb://127.0.0.1:27017/seekout';
+var path = require('path');
+var mongoUrl = 'mongodb://irusiabondarenko:35356Dnepr@ds042688.mongolab.com:42688/seekout';
 var testData = [];
 
   MongoClient.connect(mongoUrl, function(err, db){
@@ -25,7 +25,7 @@ var testData = [];
 			
 			
 			app.get('/', function (req, res) {
-			  res.sendFile('map.html', {root: __dirname});
+			  res.sendFile('map.html', {root:__dirname});
 			});
 
 			app.get('/getdata', function(req, res){
@@ -91,8 +91,8 @@ var testData = [];
 			})
 			
 
-
-			var server = app.listen(8080, function(){
+			var port = process.env.PORT || 8080;
+			var server = app.listen(port, function(){
 			  var host = server.address().address;
 			  var port = server.address().port;
 
@@ -101,6 +101,3 @@ var testData = [];
 
 		}
 });
-
-
-
