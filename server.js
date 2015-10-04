@@ -46,11 +46,7 @@ var myDB;
 
 			app.post('/add', function(req, res){
 				var realData = [];
-				/*collection.insert(req.body, function(err, result){
-					if(err) {
-						console.log('Error inserting data into db');
-					}
-				});*/
+				collection.insert(req.body);
 				realData.push(req.body);
 				res.send(realData);
 				
