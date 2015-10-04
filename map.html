@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Seek out! </title>
+	<link rel="icon" type="image/png" href="title-icon.png" />
+	<link href="http://code.jquery.com/ui/1.9.1/themes/base/jquery-ui.css" rel="stylesheet" type="text/css" />
+	<link rel="stylesheet" type="text/css" href="//cloud.typography.com/7055252/762022/css/fonts.css">
+	<link href='https://fonts.googleapis.com/css?family=Pacifico' rel='stylesheet' type='text/css'>
+	<script type="text/javascript" src="http://code.jquery.com/jquery-1.8.2.js"></script>
+	<script type="text/javascript" src="http://code.jquery.com/ui/1.9.1/jquery-ui.js"></script>
+    <meta name="viewport" content="initial-scale=1.0">
+    <meta charset="utf-8">
+    <link rel= "stylesheet" type = "text/css" href="css/style.css">
+  </head>
+  
+  <body>
+    
+	<section> 
+		<div id = "logo">Seek out!</div>
+			 <ul class = "nav-list">
+				<li class = "nav-item">
+					<a class="nav-anchor"  data-event-category="button" 
+					 id="writeMessage">Write a messsage</a>
+					 <a class = "nav-anchor" data-event-category="button"
+					 id = "howtouse"> How to use it? </a>
+					 <a class="nav-anchor"  data-event-category="button" 
+					 id="feedback">Send a feedback</a>
+				</li>
+			 </ul>
+	</section>
+
+	<div id="map"></div> 
+	  
+	<div id = "optionDialog" title = "Choose an option"></div>
+	
+	<div id = "feedbackDialog" title = "Send a feedback">
+		<p id = "hello"><b>Dear friend!</b> </p>
+		<p>My name is Iryna. I am beginner in web development and this is my first application.
+		Thank you for using the app, I am happy if you like it! <p>
+		<p>This is the first version of 'Seek out' app and it needs a lot of improvements! So  I would like you to help me in it. Please, leave your 
+		comments and ideas what you'd like me to make better! </p>
+		</p>
+		<textarea id="feedbackDescription"> </textarea>
+	</div>
+	
+	<div id = "thankYouDialog" title = "Thank you!">
+		<p> I really appriciate your attention and help!</p>
+	</div>
+	
+	<div id = "howtouseDialog" title = "It's very easy to use!">
+		<p id = "howToUsePhrase">Now you have more chances to find your lost thing!</p> </br> 
+		<p id = adPhrase> <i><strong> To make an announcement:</strong></i> </p></br>
+		<ol>
+			<li>Click the button "Write a message" on the top.</li>  </br>
+			<li>Choose an accurate spot on the map where you lost your thing.</li> </br>
+			<li>Enter all essential information that describes a thing. It's better when you add a photo url of your thing.</li> 
+		</ol></br>
+		<p id = "endPhrase"> That's it! People who live in that area will help you to find your thing! </p>
+	</div>
+	
+		<div id="messageDialog" title="Enter information about lost thing">
+				Title: </br> <input type="text" id="title" /><br>
+				Description:</br> <textarea id="description"> </textarea> </br>
+				Photo url:</br> <input type="text" id="photoURL" /> </br>
+				Contact information:</br> <input type="text" id="contact" />
+			</div>
+			<script type="text/javascript" src="js/map.js"></script>
+    <script type="text/javascript" src="js/infowindow.js"></script>
+	<script type="text/javascript" src="js/dialogs.js"></script>
+
+	
+	
+	<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDl7z1r-zwVnzceNR9_7uK9l5ZMIE8Nawo&callback=initMap"></script>
+  </body>
+</html>
