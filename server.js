@@ -4,7 +4,7 @@ var mongodb = require('mongodb');
 var nodemailer = require('nodemailer'); 
 var MongoClient = mongodb.MongoClient;
 var path = require('path');
-var mongoUrl = mongodb://irusiabondarenko:35356Dnepr@ds042688.mongolab.com:42688/seekout;
+var mongoUrl = 'mongodb://irusiabondarenko:35356Dnepr@ds042688.mongolab.com:42688/seekout';
 var testData = [];
 
 var myDB;
