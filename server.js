@@ -8,6 +8,7 @@ var mongoUrl = 'mongodb://irusiabondarenko:35356Dnepr@ds042688.mongolab.com:4268
 var testData = [];
 
 var myDB;
+var collectionEx;
   MongoClient.connect(mongoUrl, function(err, db){
 	  if(err) {
 		 console.log('Unable to connect to the mongoDB server. Error:', err);
@@ -16,6 +17,7 @@ var myDB;
 			console.log('Connection established to', mongoUrl);
       
 			var collection = db.collection('lostThings');
+			collectionEx = collection;
 			myDB = db;
 	  }
 	})	
@@ -33,8 +35,8 @@ var myDB;
             setTimeout(function(){ 
 			app.get('/getdata', function(req, res){
 				myDB.open(function(err,myDB) {
-					myDB.collection('lostThings', function(err,collection){
-						collection.find().toArray(function(err, items){
+					myDB.collectionEx('lostThings', function(err,collection){
+						collectionEx.find().toArray(function(err, items){
 							res.send(items);
 						})
 					})
@@ -45,7 +47,7 @@ var myDB;
 
 			app.post('/add', function(req, res){
 				var realData = [];
-				collection.insert(req.body, function(err, result){
+				collectionEx.insert(req.body, function(err, result){
 					if(err) {
 						console.log('Error inserting data into db');
 					}
@@ -58,7 +60,7 @@ var myDB;
 			app.post('/delete', function(req, res){
 			
 				var removeThing = req.body.unique_id;
-			    collection.remove({'unique_id': removeThing})
+			    collectionEx.remove({'unique_id': removeThing})
 				
 			});
 			
