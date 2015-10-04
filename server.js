@@ -42,8 +42,7 @@ var myDB;
 				
 			});
 			}, 2000);
-			
- setTimeout(function(){ 
+
 			app.post('/add', function(req, res){
 				var realData = [];
 				collection.insert(req.body, function(err, result){
@@ -55,7 +54,7 @@ var myDB;
 				res.send(realData);
 				
 			});
- }, 2000)
+
 			app.post('/delete', function(req, res){
 			
 				var removeThing = req.body.unique_id;
