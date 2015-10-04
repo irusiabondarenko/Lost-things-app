@@ -4,7 +4,7 @@ var mongodb = require('mongodb');
 var nodemailer = require('nodemailer'); 
 var MongoClient = mongodb.MongoClient;
 var path = require('path');
-var mongoUrl = 'mongodb://irusiabondarenko:35356Dnepr@ds042688.mongolab.com:42688/seekout';
+var mongoUrl = mongodb://irusiabondarenko:35356Dnepr@ds042688.mongolab.com:42688/seekout;
 var testData = [];
 
 var myDB;
@@ -46,7 +46,11 @@ var myDB;
 
 			app.post('/add', function(req, res){
 				var realData = [];
-				collection.insert(req.body);
+				collection.insert(req.body, function(err, result){
+					if(err) {
+						console.log('Error inserting data into db');
+					}
+				});
 				realData.push(req.body);
 				res.send(realData);
 				
