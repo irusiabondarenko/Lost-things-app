@@ -8,7 +8,7 @@ var mongoUrl = 'mongodb://irusiabondarenko:35356Dnepr@ds042688.mongolab.com:4268
 var testData = [];
 
 var myDB;
-
+var colection;
 MongoClient.connect(mongoUrl, function (err, db) {
     if (err) {
         console.log('Unable to connect to the mongoDB server. Error:', err);
@@ -16,7 +16,7 @@ MongoClient.connect(mongoUrl, function (err, db) {
         //HURRAY!! We are connected. :)
         console.log('Connection established to', mongoUrl);
 
-        var collection = db.collection('lostThings');
+        collection = db.collection('lostThings');
         myDB = db;
     }
 });
@@ -48,22 +48,29 @@ app.get('/getdata', function (req, res) {
 });
 
 app.post('/add', function(req, res){
-	var realData = [];
-	collection.insert(req.body, function(err, result){
-		if(err) {
-			console.log('Error inserting data into db');
-		}
-	});
-	realData.push(req.body);
-	res.send(realData);
-				
+    var realData = [];
+    if (collection) {
+        collection.insert(req.body, function (err, result) {
+            if (err) {
+                console.log('Error inserting data into db');
+            }
+        });
+        realData.push(req.body);
+        res.send(realData);
+    } else {
+        console.log('Collection is not defined in POST /add handler');
+        res.send('No');
+    }					
 });
 
-app.post('/delete', function(req, res){
-			
-	var removeThing = req.body.unique_id;
-	collection.remove({'unique_id': removeThing})
-				
+app.post('/delete', function(req, res){			
+    var removeThing = req.body.unique_id;
+    if (collection) {
+        collection.remove({ 'unique_id': removeThing });
+    } else {
+        console.log('Collection is not defined in POST /delete handler');
+        res.send('No');
+    }
 });
 			
 app.post('/mail', function (req, res){
