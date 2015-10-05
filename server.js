@@ -31,18 +31,20 @@ var myDB;
 			app.get('/', function (req, res) {
 			  res.sendFile('map.html', {root:__dirname});
 			});
-            setTimeout(function(){ 
 			app.get('/getdata', function(req, res){
-				myDB.open(function(err,myDB) {
+				if(myDB) {
+					myDB.open(function(err,myDB) {
 					myDB.collection('lostThings', function(err,collection){
-						collection.find().toArray(function(err, items){
-							res.send(items);
+							collection.find().toArray(function(err, items){
+								res.send(items);
+							})
 						})
 					})
-				})
+				} else {
+				    res.send('Wait');
+				}
 				
 			});
-			}, 2000);
 
 			app.post('/add', function(req, res){
 				var realData = [];

@@ -97,20 +97,36 @@ function getLocation() {
 		navigator.geolocation.getCurrentPosition(showLocation);
 	}
 }
+
+var getDataCallCount = 0;
+var getDataCallCountThreshold = 3;
 var currentPosition;
 function showLocation(position) {
 	currentPosition = position;
 	var map = initMap({lat: position.coords.latitude, lng: position.coords.longitude});
 	
-	$.ajax({
-		url: window.location.origin + '/getdata',
-		success: function(data) {
-			var testData = data;
-			
-				visualizeLostThings(testData, map);
-			
-		}
-	});
+	function getDataCallback(data) {
+	    if (data === 'Wait') {
+	        if (getDataCallCount < getDataCallCountThreshold) {
+	            setTimeout(callGetData, 2000);
+	        } else {
+	            alert("Server can't connect to database, please reload your page and try again");
+	        }
+	    } else {
+	        getDataCallCount = 0;
+	        visualizeLostThings(data, map);
+	    }
+	}
+
+	function callGetData() {
+	    getDataCallCount++;
+	    $.ajax({
+	        url: window.location.origin + '/getdata',
+	        success: getDataCallback,
+	    });
+	}
+
+	callGetData();
 } 
 
 
