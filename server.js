@@ -56,6 +56,7 @@ app.post('/add', function(req, res){
             }
         });
         realData.push(req.body);
+        console.log('Adding lost thing');
         res.send(realData);
     } else {
         console.log('Collection is not defined in POST /add handler');
@@ -63,8 +64,9 @@ app.post('/add', function(req, res){
     }					
 });
 
-app.post('/delete', function(req, res){			
+app.post('/delete', function (req, res) {
     var removeThing = req.body.unique_id;
+    console.log('Delete request arrived with id: ' + removeThing);
     if (collection) {
         collection.remove({ 'unique_id': removeThing });
     } else {
