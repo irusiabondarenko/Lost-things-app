@@ -127,7 +127,7 @@ function showLocation(position) {
 	}
 
 	callGetData();
-} 
+}
 
 
 $(function(){

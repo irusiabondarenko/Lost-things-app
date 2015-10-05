@@ -104,5 +104,3 @@ var myDB;
 
 			  console.log('Example app listening at http://%s:%s', host, port);
 			});
-
-		
