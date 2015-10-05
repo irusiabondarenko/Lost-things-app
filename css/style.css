@@ -39,8 +39,8 @@ html, body {
 	margin-top: 15px;
 	cursor: pointer;
 	color: rgb(240, 233, 233);
-	font-family: "Gotham Rounded A", "Gotham Rounded B", Helvetica, Arial, sans-serif;
-    font-weight: 500;
+	font-family: "Varela Round", Helvetica, Arial, sans-serif;
+    font-weight: 400;
  }
  
 #howtouse {
@@ -68,10 +68,10 @@ html, body {
 #howtouseDialog {
 	margin-top: 15px;
 	display: none;
-	font-family: "Gotham Rounded A", "Gotham Rounded B", Helvetica, Arial, sans-serif;
+	font-family: "Varela Round", Helvetica, Arial, sans-serif;
 }
 #howtouseDialog p {
-	font-family: "Gotham Rounded A", "Gotham Rounded B", Helvetica, Arial, sans-serif;
+	font-family: "Varela Round", Helvetica, Arial, sans-serif;
 }
 #title, #description, #photoURL, #contact {
 	width: 300px;
@@ -85,7 +85,7 @@ html, body {
 margin-left: 15px;
 width: 380px;
 height: 80px;
-font-family: "Gotham Rounded A", "Gotham Rounded B", Helvetica, Arial, sans-serif;
+font-family: "Varela Round", Helvetica, Arial, sans-serif;
 font-size: 15px;
 	
 }
@@ -147,19 +147,19 @@ ol {
 .thankYouDialogClass .ui-dialog-title {
 	margin-top: 4px;
 	font-size: 18px;
-    font-family: "Gotham Rounded A", "Gotham Rounded B", Helvetica, Arial, sans-serif;
+    font-family: "Varela Round", Helvetica, Arial, sans-serif;
 	}
 .feedbackDialogClass .ui-dialog-title {
 	margin-top: 4px;
 	margin-left: 130px;
 	font-size: 18px;
-    font-family: "Gotham Rounded A", "Gotham Rounded B", Helvetica, Arial, sans-serif;
+    font-family: "Varela Round", Helvetica, Arial, sans-serif;
 }
 .messageDialogClass .ui-dialog-title {
 	margin-top: 4px;
 	margin-left: 7px;
 	font-size: 17px;
-	font-family: "Gotham Rounded A", "Gotham Rounded B", Helvetica, Arial, sans-serif;
+	font-family: "Varela Round", Helvetica, Arial, sans-serif;
 
 }
 
