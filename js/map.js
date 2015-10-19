@@ -39,8 +39,8 @@ function setMark() {
     var listener1 =  map.addListener('click', function(e) {
 		 openDialog();
 		 latLng = e.latLng;
-		 latNew = latLng.H;
-	  lngNew = latLng.L;
+		 latNew = latLng.lat();
+	  	 lngNew = latLng.lng();
 		 google.maps.event.removeListener(listener1);
 	});
 	
