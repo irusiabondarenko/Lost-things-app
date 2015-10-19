@@ -1,9 +1,49 @@
 
-var map, map_var, latLng;
-var myLocation;
-var mapListener;
-var latLng;
-var latNew, lngNew;
+var map, map_var, latLng, myLocation, mapListener, latNew, lngNew, currentPosition;
+var curMarker;			
+var image = "images/icon.png";
+var getDataCallCount = 0;
+var getDataCallCountThreshold = 3;
+
+
+//get user's location
+$(function(){
+	if (navigator.geolocation){
+	   navigator.geolocation.getCurrentPosition(showLocation);
+	}
+});
+
+//show map
+function showLocation(position) {
+	currentPosition = position;
+	var map = initMap({lat: position.coords.latitude, lng: position.coords.longitude});
+	
+	function getDataCallback(data) {
+	//if we didn't connected to db , we are trying one more time(up to 3 times)
+	    if (data === 'Wait') {
+	        if (getDataCallCount < getDataCallCountThreshold) {
+	            setTimeout(callGetData, 1000);
+	        } else {
+	            alert("Server can't connect to database, please reload your page and try again");
+	        }
+	    } else {
+	// if we have connection to db  - vizualize data
+	        getDataCallCount = 0;
+	        visualizeLostThings(data, map);
+	    }
+	}
+//retrieve data from db
+	function callGetData() {
+	    getDataCallCount++;
+	    $.ajax({
+	        url: window.location.origin + '/getdata',
+	        success: getDataCallback,
+	    });
+	}
+
+	callGetData();
+}
+
 function initMap(coord) {
 	var style = [
   {
@@ -34,21 +74,7 @@ function initMap(coord) {
   return map;
 }
 
-function setMark() {
-	
-    var listener1 =  map.addListener('click', function(e) {
-		 openDialog();
-		 latLng = e.latLng;
-		 latNew = latLng.lat();
-	  	 lngNew = latLng.lng();
-		 google.maps.event.removeListener(listener1);
-	});
-	
-	
-		
-}  
-	
-
+//data vizualizing on the map
 function visualizeLostThings(lostThings, map){
 	if(lostThings) {
 		lostThings.forEach(function(item){
@@ -91,49 +117,18 @@ function visualizeLostThings(lostThings, map){
 }
 
 
-			
-function getLocation() {
-	if(navigator.geolocation){
-		navigator.geolocation.getCurrentPosition(showLocation);
-	}
-}
-
-var getDataCallCount = 0;
-var getDataCallCountThreshold = 3;
-var currentPosition;
-function showLocation(position) {
-	currentPosition = position;
-	var map = initMap({lat: position.coords.latitude, lng: position.coords.longitude});
+function setMark() {
 	
-	function getDataCallback(data) {
-	    if (data === 'Wait') {
-	        if (getDataCallCount < getDataCallCountThreshold) {
-	            setTimeout(callGetData, 2000);
-	        } else {
-	            alert("Server can't connect to database, please reload your page and try again");
-	        }
-	    } else {
-	        getDataCallCount = 0;
-	        visualizeLostThings(data, map);
-	    }
-	}
-
-	function callGetData() {
-	    getDataCallCount++;
-	    $.ajax({
-	        url: window.location.origin + '/getdata',
-	        success: getDataCallback,
-	    });
-	}
-
-	callGetData();
-}
-
-
-$(function(){
-	getLocation();	
-});
-
+    var listener1 =  map.addListener('click', function(e) {	 
+		 latLng = e.latLng;
+		 latNew = latLng.lat();
+	     lngNew = latLng.lng();
+	     openDialog();
+		 google.maps.event.removeListener(listener1);
+	});		
+}  
+	
+	//Lost thing constructor function
 var LostThing = function() {
 	this.coord = {
 		lng:'',
