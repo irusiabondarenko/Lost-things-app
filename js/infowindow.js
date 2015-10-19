@@ -1,3 +1,4 @@
+// Info window content
 function getLostThingContent(lostThing){
 	return '<div id="iw-container">' +
 				'<div class = "iw-title">' + lostThing.title + '</div>' +
@@ -13,9 +14,8 @@ function getLostThingContent(lostThing){
                   '</div>';	
 };
 
-var curMarker;			
-var image = "images/icon.png";
 
+// function for generation uniqueID
 function guid() {
   function s4() {
     return Math.floor((1 + Math.random()) * 0x10000)
@@ -26,6 +26,7 @@ function guid() {
     s4() + '-' + s4() + s4() + s4();
 }
 
+//deleteThing request to server
 function deleteThing() {
 	
 	$.ajax({
