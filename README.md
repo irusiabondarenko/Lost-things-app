@@ -1,2 +1,2 @@
 # Seek-out
-<a href = "seekoutapp.azurewebsites.net" Seek out website! </a>
+http://seekoutapp.azurewebsites.net
