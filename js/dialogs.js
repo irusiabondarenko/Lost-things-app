@@ -55,7 +55,7 @@ function openDialog() {
           contentType: "application/json; charset=utf-8",
           success: function(realData){
           visualizeLostThings(realData, map_var);		
-          };
+          }
         });
         $('#title').val("");
         $('#description').val("");
