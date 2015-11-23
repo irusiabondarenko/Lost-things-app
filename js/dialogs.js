@@ -20,7 +20,7 @@ function showOptions() {
         myLocation = true;
         openDialog();
         $( this ).dialog( "close" );
-      };
+      }
     };
   });
   $( "#optionDialog" ).dialog( "open" );
