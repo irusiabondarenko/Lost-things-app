@@ -21,7 +21,7 @@ function showOptions() {
         openDialog();
         $( this ).dialog( "close" );
       }
-    };
+    }
   });
   $( "#optionDialog" ).dialog( "open" );
 };
