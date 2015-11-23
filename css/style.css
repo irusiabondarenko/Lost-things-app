@@ -1,237 +1,230 @@
 html, body {
-	height:100%;
-    padding:0;
-    margin:0;
- }
+  height:100%;
+  padding:0;
+  margin:0;
+}
 #map {
-	
-	height: 100%;
-	display:block;
+  height: 100%;
+  display:block;
 }
 
- section {
-	width: 100%;
-	height: 55px;
-	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr=rgba(255,88,88,0.8), endColorstr=rgba(255,88,88,1), GradientType=0 );
-	background: -o-linear-gradient(right, rgba(255,88,88,0.8), rgba(255,88,88,1));
-	background: -ms-linear-gradient(right, rgba(255,88,88,0.8), rgba(255,88,88,1));
-	background: -webkit-linear-gradient(right, rgba(255,88,88,0.8), rgba(255,88,88,1));
-	background: -moz-linear-gradient(right, rgba(255,88,88,0.8), rgba(255,88,88,1));
-	background: linear-gradient(right, rgba(252, 88, 88, 0.8), rgba(252, 88, 88, 1));
-	background: -webkit-gradient(right, rgba(255,88,88,0.8), rgba(255,88,88,1));
-	position: absolute;
-	z-index: 2;
-	box-shadow: 0px 20px  40px rgba(72, 181, 233, 0.7);	
- }
- 
- .nav-list {
-	float: right;
-    margin-right: 23px;
-    list-style: none;
-    margin-top: 0;
-    margin-bottom: 0;
-    padding-left: 0;
- }
- .nav-item  {
-	float: right;
-    font-size: 18px;
-    margin-right: 18px;
-	margin-top: 15px;
-	cursor: pointer;
-	color: rgb(240, 233, 233);
-	font-family: "Varela Round", Helvetica, Arial, sans-serif;
-    font-weight: 600;
- }
- 
+section {
+  width: 100%;
+  height: 55px;
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr=rgba(255,88,88,0.8), endColorstr=rgba(255,88,88,1), GradientType=0 );
+  background: -o-linear-gradient(right, rgba(255,88,88,0.8), rgba(255,88,88,1));
+  background: -ms-linear-gradient(right, rgba(255,88,88,0.8), rgba(255,88,88,1));
+  background: -webkit-linear-gradient(right, rgba(255,88,88,0.8), rgba(255,88,88,1));
+  background: -moz-linear-gradient(right, rgba(255,88,88,0.8), rgba(255,88,88,1));
+  background: linear-gradient(right, rgba(252, 88, 88, 0.8), rgba(252, 88, 88, 1));
+  background: -webkit-gradient(right, rgba(255,88,88,0.8), rgba(255,88,88,1));
+  position: absolute;
+  z-index: 2;
+  box-shadow: 0px 20px  40px rgba(72, 181, 233, 0.7);	
+}
+
+.nav-list {
+  float: right;
+  margin-right: 23px;
+  list-style: none;
+  margin-top: 0;
+  margin-bottom: 0;
+  padding-left: 0;
+}
+.nav-item  {
+  float: right;
+  font-size: 18px;
+  margin-right: 18px;
+  margin-top: 15px;
+  cursor: pointer;
+  color: rgb(240, 233, 233);
+  font-family: "Varela Round", Helvetica, Arial, sans-serif;
+  font-weight: 600;
+}
+
 #howtouse {
-	margin-right: 20px;
+  margin-right: 20px;
 }
 #writeMessage{
-	margin-right: 20px;
+  margin-right: 20px;
 }
- 
- #logo {
-	 margin-top: 3px;
-	 margin-left: 50px;
-	 float: left;
-	 font-size: 25px;
-	 font-family: 'Pacifico', cursive;
-	 color: rgb(245, 250, 233);
- }
- 
- 
+
+#logo {
+  margin-top: 3px;
+  margin-left: 50px;
+  float: left;
+  font-size: 25px;
+  font-family: 'Pacifico', cursive;
+  color: rgb(245, 250, 233);
+}
+
 #messageDialog {
-	display: none;
-	color: rgba(255,88,88,1);
-	margin-left: 10px;
+  display: none;
+  color: rgba(255,88,88,1);
+  margin-left: 10px;
 }
 #howtouseDialog {
-	margin-top: 15px;
-	display: none;
-	font-family: "Varela Round", Helvetica, Arial, sans-serif;
+  margin-top: 15px;
+  display: none;
+  font-family: "Varela Round", Helvetica, Arial, sans-serif;
 }
 #howtouseDialog p {
-	font-family: "Varela Round", Helvetica, Arial, sans-serif;
+  font-family: "Varela Round", Helvetica, Arial, sans-serif;
 }
 #title, #description, #photoURL, #contact {
-	width: 300px;
+  width: 300px;
 }
 
 #description {
-	height: 60px;
-	font-size: 15px;
+  height: 60px;
+  font-size: 15px;
 }
 #feedbackDescription{
-margin-left: 15px;
-width: 380px;
-height: 80px;
-font-family: "Varela Round", Helvetica, Arial, sans-serif;
-font-size: 15px;
-	
+  margin-left: 15px;
+  width: 380px;
+  height: 80px;
+  font-family: "Varela Round", Helvetica, Arial, sans-serif;
+  font-size: 15px;
 }
 #hello {
-	font-size: 18px;
-	text-align: center;
-	color: rgb(255, 88, 88)
+  font-size: 18px;
+  text-align: center;
+  color: rgb(255, 88, 88)
 }
 
 .howToUseClass .ui-widget-header{
-	background: repeat-x scroll 34px 42px rgba(255, 51, 51, 0.8);
+  background: repeat-x scroll 34px 42px rgba(255, 51, 51, 0.8);
 }
 .howToUseClass .ui-dialog-title {
-	font-size: 20px;
-    color: white;
-	margin-left: 100px;
-	}
+  font-size: 20px;
+  color: white;
+  margin-left: 100px;
+}
 #howToUsePhrase {
-	color: rgb(255, 88, 88);
-	text-align: center;
-	font-size: 20px;
-	font-weight: 500;
-	margin: 0;
+  color: rgb(255, 88, 88);
+  text-align: center;
+  font-size: 20px;
+  font-weight: 500;
+  margin: 0;
 }
 #adPhrase {
-	margin: 0;
-	text-align: center;
+  margin: 0;
+  text-align: center;
 }
 ol {
-	margin: 0;
-	font-size: 15px;
+  margin: 0;
+  font-size: 15px;
 }
 #endPhrase {
-	margin: 0;
-	color: rgb(255, 88, 88);
-	font-size: 18px;
-	text-align: center;
+  margin: 0;
+  color: rgb(255, 88, 88);
+  font-size: 18px;
+  text-align: center;
 }
 #feedbackDialog {
-	display: none;
+  display: none;
 }
 
 #feedbackDialog p {
-	margin: 13px;
-	font-size: 15px;
+  margin: 13px;
+  font-size: 15px;
 }
 #thankYouDialog {
-	display: none;
+  display: none;
 }
- .ui-dialog-buttonpane {
-	color: blue;
+.ui-dialog-buttonpane {
+  color: blue;
 }
 .messageDialogClass .ui-widget-header, .feedbackDialogClass .ui-widget-header, .thankYouDialogClass .ui-widget-header{
-	height: 30px;
-	background: repeat-x scroll 44px 48px rgba(255, 51, 51, 0.8);
-	font-size:17px;
-	color: white;		
-	}
+  height: 30px;
+  background: repeat-x scroll 44px 48px rgba(255, 51, 51, 0.8);
+  font-size:17px;
+  color: white;		
+}
 .thankYouDialogClass .ui-dialog-title {
-	margin-top: 4px;
-	font-size: 18px;
-    font-family: "Varela Round", Helvetica, Arial, sans-serif;
-	}
+  margin-top: 4px;
+  font-size: 18px;
+  font-family: "Varela Round", Helvetica, Arial, sans-serif;
+}
 .feedbackDialogClass .ui-dialog-title {
-	margin-top: 4px;
-	margin-left: 130px;
-	font-size: 18px;
-    font-family: "Varela Round", Helvetica, Arial, sans-serif;
+  margin-top: 4px;
+  margin-left: 130px;
+  font-size: 18px;
+  font-family: "Varela Round", Helvetica, Arial, sans-serif;
 }
 .messageDialogClass .ui-dialog-title {
-	margin-top: 4px;
-	margin-left: 7px;
-	font-size: 17px;
-	font-family: "Varela Round", Helvetica, Arial, sans-serif;
-
+  margin-top: 4px;
+  margin-left: 7px;
+  font-size: 17px;
+  font-family: "Varela Round", Helvetica, Arial, sans-serif;
 }
 
 .messageDialogClass , .optionDialog, .howToUseClass {
-	border-radius: 10px 10px 10px 10px;
+  border-radius: 10px 10px 10px 10px;
 }
 .optionDialog .ui-widget-header{
-	background: repeat-x scroll 34px 42px rgba(255, 51, 51, 0.8);
-	color: white;
+  background: repeat-x scroll 34px 42px rgba(255, 51, 51, 0.8);
+  color: white;
 }
 .optionDialog .ui-dialog-title {
-	margin-left: 150px;
-	font-size: 20px;
+  margin-left: 150px;
+  font-size: 20px;
 }
 
 .ui-dialog-titlebar-close {
-	background-color: white;
+  background-color: white;
 }
 .gm-style-iw {
-	max-width: 350px;
-	top: 15px !important;
-	left: 0px !important;
-	background-color: #fff;
-	box-shadow: 0 1px 6px rgba(178, 178, 178, 0.6);
-	border: 1px solid rgba(72, 181, 233, 0.6);
-	border-radius: 2px 2px 10px 10px;
+  max-width: 350px;
+  top: 15px !important;
+  left: 0px !important;
+  background-color: #fff;
+  box-shadow: 0 1px 6px rgba(178, 178, 178, 0.6);
+  border: 1px solid rgba(72, 181, 233, 0.6);
+  border-radius: 2px 2px 10px 10px;
 }
 #iw-container {
-	margin-bottom: 10px;
+  margin-bottom: 10px;
 }
 #iw-container .iw-title {
-	font-family: 'Open Sans Condensed', sans-serif;
-	font-size: 22px;
-	font-weight: 400;
-	padding: 10px;
-	background-color: #48b5e9;
-	color: white;
-	margin: 0;
-	border-radius: 2px 2px 0 0;
+  font-family: 'Open Sans Condensed', sans-serif;
+  font-size: 22px;
+  font-weight: 400;
+  padding: 10px;
+  background-color: #48b5e9;
+  color: white;
+  margin: 0;
+  border-radius: 2px 2px 0 0;
 }
 #iw-container .iw-content {
-	min-width: 330px;
-	font-size: 13px;
-	line-height: 18px;
-	font-weight: 400;
-	margin-right: 1px;
-	padding: 15px 5px 20px 15px;
-	max-height: 140px;
-	overflow-y: scroll;
-	
-	
+  min-width: 330px;
+  font-size: 13px;
+  line-height: 18px;
+  font-weight: 400;
+  margin-right: 1px;
+  padding: 15px 5px 20px 15px;
+  max-height: 140px;
+  overflow-y: scroll;
 }
 .iw-content img {
-	float: right;
-	margin: 0 5px 15px 10px;	
-	max-height: 100px;
-	max-width: 100px;
+  float: right;
+  margin: 0 5px 15px 10px;	
+  max-height: 100px;
+  max-width: 100px;
 }
 .iw-subTitle {
-	font-size: 16px;
-	font-weight: 700;
-	padding: 5px 0;
+  font-size: 16px;
+  font-weight: 700;
+  padding: 5px 0;
 }
 
 #deleteButton {
-	margin-right: 15px;
-	width: 75px;
-	height: 30px;
-	float: right;
-	border-radius: 7px 7px 7px 7px;
-	background-color: rgba(255,88,88,1);
-	color: white;
-	cursor: pointer;
+  margin-right: 15px;
+  width: 75px;
+  height: 30px;
+  float: right;
+  border-radius: 7px 7px 7px 7px;
+  background-color: rgba(255,88,88,1);
+  color: white;
+  cursor: pointer;
 }
-</style>
