@@ -54,7 +54,7 @@ function openDialog() {
           data: JSON.stringify(lostThing), 
           contentType: "application/json; charset=utf-8",
           success: function(realData){
-          visualizeLostThings(realData, map_var);		
+			visualizeLostThings(realData, map_var);		
           }
         });
         $('#title').val("");
@@ -143,8 +143,8 @@ function thankYou() {
     buttons: {
       "Close": function() {
         $( this ).dialog( "close" );
-      };
-    };
+      }
+    }
   });
   $('#thankYouDialog').dialog("open");
 };
