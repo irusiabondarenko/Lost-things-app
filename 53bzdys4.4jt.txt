@@ -1,0 +1,57 @@
+﻿pick 465137e Initial commit
+pick d95a1e8 second
+pick 85785e1 Third
+pick 5d51255 Third
+pick dcafaf7 Initial commit
+pick 60b65fb jdhf
+pick 761e48a Initial commit
+pick a19594d Removed timeout on server
+pick 37748cf Removed files
+pick 988d384 no localhost:8080 anymore
+pick 439245a Fixed small mistake in dialogs
+pick 3abbe66 Trying to fix server
+pick 097339b Added log to getdata
+pick 931cfd0 Added collection checks
+pick 45d87dc Added server logs
+pick 053b245 Font changed
+pick d220a26 Font weight
+pick ea4563e Update map.html
+pick a60fec4 Update map.html
+pick 4d1188d Update map.html
+pick bfb9197 Update map.js
+pick 932fd9a Update map.html
+pick 890e5a9 Update infowindow.js
+pick 943649c Update map.js
+pick 177c0db Create README.md
+pick 98febde Update README.md
+pick e034bf9 Update README.md
+pick 1d77fac Update README.md
+pick 491d943 Create LICENSE
+pick 0d80ed3 Delete Thumbs.db
+pick 74f438d Delete npm-debug.log
+pick 58fc62b Update README.md
+pick 73c9a44 Delete Thumbs.db
+pick ae2ca7c Style fix
+pick b63eb6a Fix in dialogs.js
+pick c218bd7 Style fix
+pick cd76fe9 Fix in dialogs.js
+pick 2589acc Fix in dialogs.js
+
+# Rebase 1ce8287..2589acc onto 1ce8287
+#
+# Commands:
+#  p, pick = use commit
+#  r, reword = use commit, but edit the commit message
+#  e, edit = use commit, but stop for amending
+#  s, squash = use commit, but meld into previous commit
+#  f, fixup = like "squash", but discard this commit's log message
+#  x, exec = run command (the rest of the line) using shell
+#
+# These lines can be re-ordered; they are executed from top to bottom.
+#
+# If you remove a line here THAT COMMIT WILL BE LOST.
+#
+# However, if you remove everything, the rebase will be aborted.
+#
+# Note that empty commits are commented out
+
